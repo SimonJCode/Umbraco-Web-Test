@@ -1,0 +1,27 @@
+﻿@inherits UmbracoViewPage
+@{
+    var logo = Model.Value<IPublishedContent>("logo");
+    var headerBackgroundImage = Model.Value<IPublishedContent>("backgroundImage");
+
+    var logoUrl = "";
+    if(logo != null)
+    {
+        logoUrl = logo.GetCropUrl(150, 150);
+    }
+    var headerBackgroundImageUrl = "";
+    if(headerBackgroundImage != null)
+    {
+        headerBackgroundImageUrl = headerBackgroundImage.GetCropUrl(1903, 532);
+    }
+}
+
+<header class="page-header" style="@(!string.IsNullOrWhiteSpace(headerBackgroundImageUrl) ? "background-image: url('" + headerBackgroundImageUrl + "')" : null)">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">  
+            <img id="header-logo" src="@logoUrl" alt="TeamLogo" />
+            <h1 class="header-team"><strong>@(!string.IsNullOrWhiteSpace(Model.Value<string>("team")) ? Model.Value("team") : Model.Name)</strong></h1>           
+        </div>        
+    </div>
+</header>
+

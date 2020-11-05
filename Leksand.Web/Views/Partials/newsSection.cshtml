@@ -1,0 +1,41 @@
+﻿@inherits UmbracoViewPage
+
+@{
+    var newsList = Model.Root().Descendants<NewsList>().FirstOrDefault();
+    var news = newsList.Root().Descendants<News>().OrderByDescending(y => y.Date);
+
+    var collumnCounter = 0;
+}
+
+<div class="row">
+    @foreach (var article in news)
+    {
+        if (collumnCounter != 0 && collumnCounter % 3 == 0)
+        {
+        @:</div>
+        @:<div class="row">
+        }
+
+        <div class="col-md-4 card-collumn">
+            <div class="card">
+                <img src="@article.Thumbnail.Url()" alt="Avatar" style="width:100%">
+                <div class="card-container">
+                    <h5><b>@article.NewsTitle</b></h5>
+                    <p>@article.Date.ToString("yyyy-MM-d H:mm")</p>
+                </div>
+            </div>
+        </div>
+
+        collumnCounter++;
+        if(collumnCounter == 6)
+        {
+            break;
+        }
+    }
+</div>
+<div class="row">
+    <div class="col-md-4 offset-md-4 text-center">
+        <button id="news-btn" type="button">Fler Nyheter</button>
+    </div>
+</div>
+

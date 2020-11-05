@@ -1,0 +1,44 @@
+﻿@inherits UmbracoViewPage
+@{
+    var teamList = Model.Root().Descendants<LeagueStandingsTable>().FirstOrDefault();
+    var teams = teamList.Descendants<Team>().OrderByDescending(y => y.LeaguePoints);
+
+    var positionCounter = 1;
+}
+
+<div class="league-table">
+    <div class="league-header-container text-center">
+        <h4 id="table-header">SHL 2020/2021</h4>
+    </div>
+    <table class="table table-striped">
+        <thead id="table-head">
+            <tr>
+                <th scope="col">Pos</th>
+                <th scope="col">Lag</th>
+                <th scope="col">GP</th>
+                <th scope="col">P</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var team in teams)
+            {
+                <tr>
+                    <th scope="row">@positionCounter</th>
+                    <td><strong>@team.TeamName</strong></td>
+                    <td><strong>@team.GamesPlayed</strong></td>
+                    <td><strong>@team.LeaguePoints</strong></td>
+                </tr>
+                positionCounter++;
+            }
+        </tbody>
+        <tfoot id="table-footer">
+            <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+

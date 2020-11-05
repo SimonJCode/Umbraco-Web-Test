@@ -1,0 +1,28 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Home>
+@{
+    Layout = "Master.cshtml";
+}
+
+@Html.Partial("~/Views/Partials/pageHeader.cshtml")
+
+@Html.Partial("~/Views/Partials/navigationBar.cshtml")
+
+<section class="content-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                @Html.Partial("~/Views/Partials/newsSection.cshtml")
+            </div>
+            <div class="col-md-4">
+                @Html.Partial("~/Views/Partials/leagueStandingsTable.cshtml")
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+
+        </div>
+    </div>
+</section>
+
+@Html.Partial("~/Views/Partials/pageFooter.cshtml")
