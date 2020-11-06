@@ -1,6 +1,7 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Home>
 @{
     Layout = "Master.cshtml";
+
 }
 
 @Html.Partial("~/Views/Partials/pageHeader.cshtml")
@@ -17,10 +18,12 @@
                 @Html.Partial("~/Views/Partials/leagueStandingsTable.cshtml")
             </div>
         </div>
+        <hr />
     </div>
     <div class="container">
         <div class="row">
-
+            @Html.Partial("~/Views/Partials/playerToplist.cshtml", Model, new ViewDataDictionary { { "genre", "herr" } })
+            @*@Html.Partial("~/Views/Partials/playerToplist.cshtml", Model, new ViewDataDictionary { { "genre", "dam" } })*@
         </div>
     </div>
 </section>

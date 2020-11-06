@@ -1,0 +1,63 @@
+﻿@inherits UmbracoViewPage
+
+@{
+    //var test = ViewData["genre"];
+
+    var playerList = Model.Root().Descendants<PlayerList>().FirstOrDefault();
+    var womensPlayerList = Model.Root().Descendants<WomensPlayerList>().FirstOrDefault();
+
+    var players = playerList.Root().Descendants<Player>().OrderByDescending(y => y.PlayerPoints);
+    var womensPlayers = womensPlayerList.Root().Descendants<Player>().OrderByDescending(y => y.PlayerPoints);
+
+}
+
+<div class="col-md-4">
+    <div class="top-player-container">
+        <div class="top-player-header text-center">
+            <h4>Poängliga Herr</h4>
+        </div>
+        @foreach (var player in players)
+        {
+            <div class="row top-player">
+                <div class="col-4 mx-auto">
+                    <img src="@player.PlayerImage.Url()" alt="top player" style="width: 100%" />
+                </div>
+                <div class="col-5 p-0">
+                    <h5>@player.PlayerName</h5>
+                    <p>@player.PlayerPosition</p>
+                </div>
+                <div class="col-3 p-0">
+                    <h5>Poäng:</h5>
+                    <h5>@player.PlayerPoints</h5>
+                </div>
+            </div>
+            <hr />
+        }
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="top-player-container">
+        <div class="top-player-header text-center">
+            <h4>Poängliga Dam</h4>
+        </div>
+        @foreach (var playe in womensPlayers)
+        {
+            <div class="row top-player">
+                <div class="col-4 mx-auto">
+                    <img src="@playe.PlayerImage.Url()" alt="top player" style="width: 100%" />
+                </div>
+                <div class="col-5 p-0">
+                    <h5>@playe.PlayerName</h5>
+                    <p>@playe.PlayerPosition</p>
+                </div>
+                <div class="col-3 p-0">
+                    <h5>Poäng:</h5>
+                    <h5>@playe.PlayerPoints</h5>
+                </div>
+            </div>
+            <hr />
+        }
+    </div>
+</div>
+
+

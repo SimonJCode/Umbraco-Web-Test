@@ -307,8 +307,12 @@
     <Compile Include="App_Data\Models\News.generated.cs" />
     <Compile Include="App_Data\Models\NewsContentControls.generated.cs" />
     <Compile Include="App_Data\Models\NewsList.generated.cs" />
+    <Compile Include="App_Data\Models\Player.generated.cs" />
+    <Compile Include="App_Data\Models\PlayerContentController.generated.cs" />
+    <Compile Include="App_Data\Models\PlayerList.generated.cs" />
     <Compile Include="App_Data\Models\Team.generated.cs" />
     <Compile Include="App_Data\Models\TeamsContentControls.generated.cs" />
+    <Compile Include="App_Data\Models\WomensPlayerList.generated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -341,6 +345,7 @@
     <Content Include="Views\Partials\newsSection.cshtml" />
     <Content Include="Views\Partials\leagueStandingsTable.cshtml" />
     <Content Include="Views\Partials\pageFooter.cshtml" />
+    <Content Include="Views\Partials\playerToplist.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
